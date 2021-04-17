@@ -1,0 +1,25 @@
+.customInput input {
+  width: 100%;
+  border: 1px solid lightgrey;
+}
+.customSelectInput select:focus,
+.customInput input:focus {
+  outline: none;
+  box-shadow: none;
+  border: 1px solid lightgrey;
+}
+
+.customSelectInput select {
+  width: 100%;
+  border: 1px solid lightgrey;
+  cursor: pointer;
+}
+
+/* .customSelectInput:focus {
+  outline: none;
+  box-shadow: 0;
+  border: inherit;
+} */
+
+.customSelectInput option {
+}

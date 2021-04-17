@@ -1,0 +1,13 @@
+.customButton button {
+  width: 100%;
+  border: none;
+}
+.customButton button:focus {
+  outline: none;
+  box-shadow: none;
+  border: 0;
+}
+
+.customButton button:active:focus {
+  box-shadow: none;
+}
