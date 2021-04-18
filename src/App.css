@@ -1,0 +1,10 @@
+
+.formContainer{
+    border: 1px solid lightgray;
+    padding: 50px 100px;
+    box-shadow: 0px 0px 2px -1px;
+}
+
+.formContainer div{
+    margin-bottom: 15px;
+}

@@ -1,53 +1,75 @@
 import React, { useState } from "react";
 import "./App.css";
 import Button from "./Components/WebLayout/Input/Button/button";
-import Input from "./Components/WebLayout/Input/input";
+import Input from "./Components/WebLayout/Input/input"
 
 function App() {
-  const [value, setValue] = useState("");
+  const [name, setName]=useState('')
+  const [email, setEmail]=useState('')
+  const [password, setPassword]=useState("")
+  const [gender, setGender]=useState("")
   const options = ["one", "Two", "Three"];
-  console.log("valueeee", value);
+  const [opValue, setOpValue]=useState(options[0])
+  const [file, setFile]=useState("")
+
+  const output={
+    name:name,
+    email:email,
+    password: password,
+    gender:gender,
+    opValue:opValue,
+    file:file
+  }
+  console.log("output", output);
   return (
     <div className="container">
-      <div className="form">
+      <div className="formContainer">
         <Input
-          title=""
-          value={value}
-          setValue={setValue}
+          label="name"
+          value={name}
           type="text"
-          id="sayeem"
+          changed={(e) => setName(e.target.value)}
         />
         <Input
-          title="tshirt"
-          value={value}
-          setValue={setValue}
-          type="radio"
-          id="sayeem"
+          label="email"
+          value={email}
+          type="email"
+          changed={(e) => setEmail(e.target.value)}
         />
-        <Input
-          title="show"
-          value={value}
-          setValue={setValue}
+         <Input
+          label="password"
+          value={password}
+          type="password"
+          changed={(e) => setPassword(e.target.value)}
+        />
+         <Input
+          label="male"
+          value="male"
           type="checkbox"
-          id="sayeem"
+          changed={(e) => setGender(e.target.value)}
         />
-        <Input
-          title=""
-          value={value}
-          setValue={setValue}
+         <Input
+          label="female"
+          value="female"
           type="checkbox"
-          id="sayeem"
+          changed={(e) => setGender(e.target.value)}
         />
         <Input
-          title=""
-          value={value}
-          setValue={setValue}
+          value={opValue}
           options={options}
           type="select"
-          id="sayeem"
+          changed={(e) => setOpValue(e.target.value)}
         />
+        <Input
+          label="upload"
+          value={file}
+          type="file"
+          changed={(e) => setFile(e.target.value)}
+        />
+        <div className="d-flex justify-content-between">
         <Button title="add" color="primary" />
         <Button title="delete" color="secondary" />
+        </div>
       </div>
     </div>
   );

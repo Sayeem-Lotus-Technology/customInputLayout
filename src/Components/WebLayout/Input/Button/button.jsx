@@ -1,10 +1,10 @@
 import "./button.css"
 
-const Button = ({ title, color, }) => {
+const Button = (props) => {
 
     return (
         <div className="customButton">
-            <button className={"text-capitalize btn-" + color}>{title} </button>
+            <button className={"text-capitalize btn-" + props.color}>{props.title} </button>
         </div>
     );
 

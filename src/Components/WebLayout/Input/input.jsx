@@ -1,29 +1,47 @@
 import "./input.css"
 
-const Input = ({ title, type, id, value, setValue, options }) => {
-    if (type === "select") {
-        return (
-            <div className="customSelectInput">
-                <select value={value} onChange={(e) => setValue(e.target.value)} className="form-select" aria-label="Default select example">
-                    {options ? options.map((op) => (
-                        <option key={op} value={op}>{op}</option>
-                    )) : ""}
-                </select>
-            </div>
-        );
+const Input = (props) => {
+    let inputElement;
+
+    switch (props.type) {
+        case "select":
+            inputElement = (
+                <div className="customSelectInput">
+                    <select value={props.value} {...props} onChange={props.changed} className="form-select" aria-label="Default select example">
+                        {props.options ? props.options.map((op) => (
+                            <option key={op} value={op}>{op}</option>
+                        )) : ""}
+                    </select>
+                </div>
+            );
+            break;
+        case "radio":
+            inputElement = (
+                <div className="customCheckOrRadio">
+                    <input onChange={props.changed} value={props.value} type={props.type} />  {props.label ? <label className="text-capitalize">{props.label}</label> : ""}
+                </div>
+            );
+            break;
+        case "checkbox":
+            inputElement = (
+                <div className="customCheckOrRadio">
+                    <input onChange={props.changed} value={props.value} type={props.type} /> {props.label ? <label className="text-capitalize">{props.label}</label> : ""}
+                </div>
+
+            );
+            break;
+        default:
+            inputElement = (
+                <div className="customInput">
+                    {props.label ? <label className="text-capitalize"> {props.label} </label> : ""}
+                    <input onChange={props.changed} value={props.value} type={props.type}
+                    />
+                </div>
+            );
     }
-    if (type === "radio" || type === "checkbox") {
-        return (
-            <div className="customCheckOrRadio">
-                <input onChange={(e) => setValue(e.target.value)} value={title} type={type} id={id} />  {title ? <label className="text-capitalize" htmlFor={id}>{title}</label> : ""}
-            </div>
-        );
-    }
+
     return (
-        <div className="customInput">
-            <input onChange={(e) => setValue(e.target.value)} value={value} type={type} id={id} /> <br />
-            {title ? <label className="text-capitalize" htmlFor={id}>{title}</label> : ""}
-        </div>
+        inputElement
     );
 
 
