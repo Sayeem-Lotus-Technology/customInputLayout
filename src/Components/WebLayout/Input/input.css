@@ -1,3 +1,4 @@
+.customTextArea textarea,
 .customInput input {
   width: 100%;
   border: 1px solid lightgrey;
@@ -15,11 +16,3 @@
   cursor: pointer;
 }
 
-/* .customSelectInput:focus {
-  outline: none;
-  box-shadow: 0;
-  border: inherit;
-} */
-
-.customSelectInput option {
-}

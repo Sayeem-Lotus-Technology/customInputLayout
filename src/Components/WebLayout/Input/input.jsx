@@ -4,6 +4,14 @@ const Input = (props) => {
     let inputElement;
 
     switch (props.type) {
+        case "textArea":
+            inputElement = (
+                <div className="customTextArea">
+                    {props.label ? <label className="text-capitalize">{props.label}</label> : ""}
+                    <textarea onChange={props.changed} value={props.value} />
+                </div>
+            );
+            break;
         case "select":
             inputElement = (
                 <div className="customSelectInput">
@@ -15,21 +23,8 @@ const Input = (props) => {
                 </div>
             );
             break;
-        case "radio":
-            inputElement = (
-                <div className="customCheckOrRadio">
-                    <input onChange={props.changed} value={props.value} type={props.type} />  {props.label ? <label className="text-capitalize">{props.label}</label> : ""}
-                </div>
-            );
-            break;
-        case "checkbox":
-            inputElement = (
-                <div className="customCheckOrRadio">
-                    <input onChange={props.changed} value={props.value} type={props.type} /> {props.label ? <label className="text-capitalize">{props.label}</label> : ""}
-                </div>
 
-            );
-            break;
+
         default:
             inputElement = (
                 <div className="customInput">

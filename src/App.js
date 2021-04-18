@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import "./App.css";
-import Button from "./Components/WebLayout/Input/Button/button";
+import Button from "./Components/WebLayout/Button/button";
+import CheckBox from "./Components/WebLayout/CheckBox/checkBox";
 import Input from "./Components/WebLayout/Input/input"
+import Radio from "./Components/WebLayout/Radio/radio";
 
 function App() {
   const [name, setName]=useState('')
@@ -11,14 +13,34 @@ function App() {
   const options = ["one", "Two", "Three"];
   const [opValue, setOpValue]=useState(options[0])
   const [file, setFile]=useState("")
+  const [textArea, setTextArea]=useState("")
+  const[fever, setFever]=useState(null)
+  const[pain, setPain]=useState(null)
 
+const handlePain = (e) => {
+  if(e.target.checked){
+    setPain(e.target.value)
+  }else{
+    setPain(null)
+  }
+}
+const handleFever = (e) => {
+  if(e.target.checked){
+    setFever(e.target.value)
+  } else{
+    setFever(null)
+  }
+}
   const output={
     name:name,
     email:email,
     password: password,
-    gender:gender,
     opValue:opValue,
-    file:file
+    file:file,
+    textArea:textArea,
+    pain:pain,
+    fever:fever,
+    gender:gender,
   }
   console.log("output", output);
   return (
@@ -42,17 +64,19 @@ function App() {
           type="password"
           changed={(e) => setPassword(e.target.value)}
         />
-         <Input
-          label="male"
-          value="male"
-          type="radio"
-          changed={(e) => setGender(e.target.value)}
-        />
-         <Input
-          label="female"
-          value="female"
+         <CheckBox
+          label="fever"
+          value="fever"
           type="checkbox"
-          changed={(e) => setGender(e.target.value)}
+          onChecked={handleFever}
+         
+        />
+          <CheckBox
+          label="pain"
+          value="pain"
+          type="checkbox"
+          onChecked={handlePain}
+          
         />
         <Input
           value={opValue}
@@ -65,6 +89,26 @@ function App() {
           value={file}
           type="file"
           changed={(e) => setFile(e.target.value)}
+        />
+        <Input
+          label="TeaxArea"
+          value={textArea}
+          type="textArea"
+          changed={(e) => setTextArea(e.target.value)}
+        />
+        <Radio
+          name="sayeem"
+          label="female"
+          value="female"
+          type="radio"
+          changed={(e)=>setGender(e.target.value)}
+        />
+         <Radio
+          name="sayeem"
+          label="male"
+          value="male"
+          type="radio"
+          changed={(e)=>setGender(e.target.value)}
         />
         <div className="d-flex justify-content-between">
         <Button title="add" color="primary" />
