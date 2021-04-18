@@ -45,7 +45,7 @@ function App() {
          <Input
           label="male"
           value="male"
-          type="checkbox"
+          type="radio"
           changed={(e) => setGender(e.target.value)}
         />
          <Input
